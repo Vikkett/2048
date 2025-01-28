@@ -36,6 +36,15 @@ grid_values = [
     [2048, 4, 64, 4096],
     [16, 128, 512, 8192]
 ]
+"""
+# Initial grid values from the image
+grid_values = [
+    [2, 0, 0, 0],
+    [2, 0, 2, 0],
+    [0, 2, 0, 0],
+    [0, 0, 0, 2]
+]
+"""
 
 tile=[[None,None,None,None],[None,None,None,None],[None,None,None,None],[None,None,None,None]]
 
@@ -56,25 +65,40 @@ title_label = tk.Label(
     root,
     text="2048",
     font=("Arial", 40, "bold"),
+    bg="beige"
 )
 title_label.pack(anchor="nw", padx=10, pady=10)
 
 
 
 score = tk.Frame(root, bg="beige")
-score.pack(anchor="center", padx=10, pady=5)
+score.place(x=150, y=100)
 
 score_label = tk.Label(
     score,
-    text="Score: 0",
-    font=("Arial", 14)
+    text="Score",
+    font=("Arial", 14),
+    bg="beige",
+    relief="solid",
+    width=5
 )
 score_label.pack(side="left", padx=5)
 
+line = tk.Frame(root, bg="black", height=2, width=50)  # Width adjusted for length of the line
+line.place(x=230, y=125)
+
+line = tk.Frame(root, bg="black", height=2, width=50)  # Width adjusted for length of the line
+line.place(x=480, y=125)
+
+top = tk.Frame(root, bg="beige")
+top.place(x=400, y=100)
 top_label = tk.Label(
-    score,
-    text="Top: 0",
-    font=("Arial", 14)
+    top,
+    text="Top",
+    font=("Arial", 14),
+    bg="beige",
+    relief="solid",
+    width=5
 )
 top_label.pack(side="left", padx=5)
 
