@@ -43,14 +43,46 @@ tile=[[None,None,None,None],[None,None,None,None],[None,None,None,None],[None,No
 def display_grid():
     for i in range(4):
         for j in range(4):
-            tile[i][j].config(text=grid_values[i][j],bg=tile_colors[grid_values[i][j]])
+            tile[i][j].config(text=grid_values[i][j] if grid_values[i][j] != 0 else "",bg=tile_colors[grid_values[i][j]])
 
 
 # création fenêtre
 root=tk.Tk()
+root.title("2048")
+root.geometry("700x700")
+root.configure(bg="beige")
+
+title_label = tk.Label(
+    root,
+    text="2048",
+    font=("Arial", 40, "bold"),
+)
+title_label.pack(anchor="nw", padx=10, pady=10)
+
+
+
+score = tk.Frame(root, bg="beige")
+score.pack(anchor="center", padx=10, pady=5)
+
+score_label = tk.Label(
+    score,
+    text="Score: 0",
+    font=("Arial", 14)
+)
+score_label.pack(side="left", padx=5)
+
+top_label = tk.Label(
+    score,
+    text="Top: 0",
+    font=("Arial", 14)
+)
+top_label.pack(side="left", padx=5)
+
+
 
 frame = tk.Frame(root, bg="black", padx=5, pady=5)
 frame.pack()
+frame.place(relx=0.5, rely=0.5, anchor="center")
 
 for i in range(4):
     for j in range(4):
