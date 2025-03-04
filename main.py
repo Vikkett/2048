@@ -45,7 +45,7 @@ grid_values = [
 tile = [[None, None, None, None], [None, None, None, None], [None, None, None, None], [None, None, None, None]]
 
 # Compteur de mouvements
-move_count = 0
+move_count=0
 
 # Fonction pour rafraîchir l'affichage de la grille
 def display_grid():
