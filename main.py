@@ -1,8 +1,20 @@
+# C:\Users\px75qgn\Desktop\2048-right-version
 # -*- coding: utf-8 -*-
+
+#--------1---------2---------3---------4---------5---------6---------7---------8
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+"""
+Nom : 2048.py
+Date : 28.01.2025
+Version : 0.0.1
+Purpose : le jeu 2048
+author : Varennyk Viktoriia
+"""
 
 import tkinter as tk
 from tkinter import messagebox
 import random
+
 # Define the colors for the numbers based on the image
 tile_colors = {
     0: "white",
@@ -34,6 +46,7 @@ tile = [[None, None, None, None], [None, None, None, None], [None, None, None, N
 # Initialize move counter
 move_count = 0
 
+
 # Refresh the grid display
 def display_grid():
     for i in range(4):
@@ -43,6 +56,7 @@ def display_grid():
             else:
                 text = grid_values[i][j]
             tile[i][j].config(text=text, bg=tile_colors[grid_values[i][j]])
+
 
 # Function to pack the tiles and check if merges are possible
 def pack4(a, b, c, d):
@@ -74,6 +88,7 @@ def pack4(a, b, c, d):
         nm += 1
     return (a, b, c, d), nm
 
+
 # Add a random tile (2 or 4) in an empty spot
 def add_random_tile():
     empty_tiles = [(i, j) for i in range(4) for j in range(4) if grid_values[i][j] == 0]
@@ -81,62 +96,108 @@ def add_random_tile():
         i, j = random.choice(empty_tiles)
         grid_values[i][j] = random.choice([2, 4])
 
+
 # Start the game by adding two random tiles
 def start():
     global grid_values
+    global move_count
     grid_values = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
+    move_count = 0
     add_random_tile()
     add_random_tile()
     display_grid()
+
 
 # Move right
 def right():
     global move_count
     move_count = 0
     for line in range(4):
-        (grid_values[line][3], grid_values[line][2], grid_values[line][1], grid_values[line][0]), nm = pack4(grid_values[line][3], grid_values[line][2], grid_values[line][1], grid_values[line][0])
+        (grid_values[line][3], grid_values[line][2], grid_values[line][1], grid_values[line][0]), nm = pack4(
+            grid_values[line][3], grid_values[line][2], grid_values[line][1], grid_values[line][0])
         move_count += nm
     if move_count > 0:
         add_random_tile()
     display_grid()
+    check_win_loss()
+
 
 # Move left
 def left():
     global move_count
     move_count = 0
     for line in range(4):
-        (grid_values[line][0], grid_values[line][1], grid_values[line][2], grid_values[line][3]), nm = pack4(grid_values[line][0], grid_values[line][1], grid_values[line][2], grid_values[line][3])
+        (grid_values[line][0], grid_values[line][1], grid_values[line][2], grid_values[line][3]), nm = pack4(
+            grid_values[line][0], grid_values[line][1], grid_values[line][2], grid_values[line][3])
         move_count += nm
     if move_count > 0:
         add_random_tile()
     display_grid()
+    check_win_loss()
+
 
 # Move up
 def moveup():
     global move_count
     move_count = 0
     for col in range(4):
-        (grid_values[0][col], grid_values[1][col], grid_values[2][col], grid_values[3][col]), nm = pack4(grid_values[0][col], grid_values[1][col], grid_values[2][col], grid_values[3][col])
+        (grid_values[0][col], grid_values[1][col], grid_values[2][col], grid_values[3][col]), nm = pack4(
+            grid_values[0][col], grid_values[1][col], grid_values[2][col], grid_values[3][col])
         move_count += nm
     if move_count > 0:
         add_random_tile()
     display_grid()
+    check_win_loss()
+
 
 # Move down
 def movedown():
     global move_count
     move_count = 0
     for col in range(4):
-        (grid_values[3][col], grid_values[2][col], grid_values[1][col], grid_values[0][col]), nm = pack4(grid_values[3][col], grid_values[2][col], grid_values[1][col], grid_values[0][col])
+        (grid_values[3][col], grid_values[2][col], grid_values[1][col], grid_values[0][col]), nm = pack4(
+            grid_values[3][col], grid_values[2][col], grid_values[1][col], grid_values[0][col])
         move_count += nm
     if move_count > 0:
         add_random_tile()
     display_grid()
+    check_win_loss()
+
+
+# Check for win condition (2048 reached)
+def check_win_loss():
+    # Check for win
+    if any(2048 in row for row in grid_values):
+        game_over("You won!", "Congratulations, you reached 2048!")
+    # Check for loss (no valid moves left)
+    elif not any(0 in row for row in grid_values) and not any_valid_move():
+        game_over("Game Over", "No valid moves left!")
+
+
+# Check if any valid moves are possible
+def any_valid_move():
+    for i in range(4):
+        for j in range(4):
+            if i < 3 and grid_values[i][j] == grid_values[i + 1][j]:  # Check vertical merges
+                return True
+            if j < 3 and grid_values[i][j] == grid_values[i][j + 1]:  # Check horizontal merges
+                return True
+            if grid_values[i][j] == 0:  # Check if there's any empty space
+                return True
+    return False
+
+
+# Show game over window
+def game_over(title, message):
+    # Disable the movement keys while game is over
+    root.unbind('<Key>')
+    result = messagebox.showinfo(title, message)
+
 
 # Handle key press events
 def key_pressed(event):
@@ -154,6 +215,7 @@ def key_pressed(event):
         if result:
             print(f"Game Over! T'as fait {move_count} mouvement.")
             quit()
+
 
 # Bind key presses to the key_pressed function
 root = tk.Tk()
