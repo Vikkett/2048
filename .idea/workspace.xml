@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba9080b7-d2da-4c36-9a7c-2e5ac7b99329" name="Changes" comment="" />
+    <list default="true" id="ba9080b7-d2da-4c36-9a7c-2e5ac7b99329" name="Changes" comment="version 1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +41,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/px75qgn/Desktop/pythonn/2048&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/px75qgn/Desktop/2048-right-version&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -66,13 +69,54 @@
       <workItem from="1738070638390" duration="61000" />
       <workItem from="1738070700853" duration="6346000" />
       <workItem from="1739286420079" duration="396000" />
+      <workItem from="1741092055297" duration="3674000" />
+      <workItem from="1741095821054" duration="5086000" />
+      <workItem from="1741695881094" duration="9123000" />
     </task>
+    <task id="LOCAL-00001" summary="version 1.0">
+      <option name="closed" value="true" />
+      <created>1741095838978</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741095838978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="version 1.0">
+      <option name="closed" value="true" />
+      <created>1741098544519</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741098544519</updated>
+    </task>
+    <task id="LOCAL-00003" summary="version 1.0">
+      <option name="closed" value="true" />
+      <created>1741100619840</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741100619840</updated>
+    </task>
+    <task id="LOCAL-00004" summary="version 1.0">
+      <option name="closed" value="true" />
+      <created>1741100659798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741100659798</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="version 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.0" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/2048_right_version$main.coverage" NAME="main Coverage Results" MODIFIED="1741706296720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/2048$main.coverage" NAME="main Coverage Results" MODIFIED="1739286451490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
