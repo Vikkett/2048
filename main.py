@@ -23,14 +23,19 @@ tile_colors = {
 grid_values = [[0, 0, 0, 0] for _ in range(4)]
 tile = [[None] * 4 for _ in range(4)]
 move_count = 0
+score = 0  # Initialize score
+best_score = 0  # Initialize best score
 
 def display_grid():
     for i in range(4):
         for j in range(4):
             text = "" if grid_values[i][j] == 0 else grid_values[i][j]
             tile[i][j].config(text=text, bg=tile_colors[grid_values[i][j]])
+    score_label.config(text=f"Score: {score}")  # Update score display
+    top_score_label.config(text=f"Top : {best_score}")  # Update top score display
 
 def pack4(a, b, c, d):
+    global score  # Access the global score variable
     nm = 0
     if c == 0 and d != 0:
         c = d
@@ -43,17 +48,20 @@ def pack4(a, b, c, d):
         a, b, c, d = b, c, d, 0
         nm += 1
     if a == b and a != 0:
+        score += 2 * a  # Update score
         a = 2 * a
         b = c
         c = d
         d = 0
         nm += 1
     if b == c and b > 0:
+        score += 2 * b  # Update score
         b = 2 * b
         c = d
         d = 0
         nm += 1
     if c == d and c > 0:
+        score += 2 * c  # Update score
         c = 2 * c
         d = 0
         nm += 1
@@ -66,9 +74,10 @@ def add_random_tile():
         grid_values[i][j] = random.choice([2, 4])
 
 def start():
-    global grid_values, move_count
+    global grid_values, move_count, score, best_score
     grid_values = [[0, 0, 0, 0] for _ in range(4)]
     move_count = 0
+    score = 0  # Reset score
     add_random_tile()
     add_random_tile()
     display_grid()
@@ -123,6 +132,9 @@ def movedown():
     check_win_loss()
 
 def check_win_loss():
+    global best_score  # Access the global best score variable
+    if score > best_score:
+        best_score = score  # Update best score if current score is higher
     if any(2048 in row for row in grid_values):
         game_over("You won!", "Félicitations, vous avez atteint 2048!")
     elif not any(0 in row for row in grid_values) and not any_valid_move():
@@ -182,6 +194,24 @@ title_label = tk.Label(
     fg="red"
 )
 title_label.pack(anchor="nw", padx=10, pady=10)
+
+# Add top score label
+top_score_label = tk.Label(
+    root,
+    text="Top Score: 0",  # Changed from "Best Score" to "Top Score"
+    font=("Arial", 20),
+    fg="black"
+)
+top_score_label.pack(anchor="ne", padx=10, pady=(0, 5))  # Increased padding below
+
+# Score label
+score_label = tk.Label(
+    root,
+    text="Score: 0",
+    font=("Arial", 20),
+    fg="black"
+)
+score_label.pack(anchor="ne", padx=10, pady=(0, 10))  # Add some padding below
 
 new_game_button = tk.Button(
     root,
